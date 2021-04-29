@@ -1,0 +1,27 @@
+;; for ic_mark recognition
+(defun hold-suica ()
+  (send *ri* :stop-grasp)
+  (send *ri* :start-grasp)
+  )
+
+(defun search-mark (frame)
+  (setq mark nil)
+  (ros::rate 10)
+  (while (null mark)
+    (unless (boundp '*tfl*) (setq *tfl* (instance transform-listener :init)))
+    ;; (setq tm (send *tfl* :get-latest-common-time "/base_link" frame))
+    (setq mark (send *tfl* :lookup-transform "/base_link" frame (ros::time 0)))
+    ;;(ros::ros-info "msg [~A]" mark)
+    (ros::sleep)
+    )
+  (ros::ros-info "msg [~A]" mark)
+  ;; (setq c1 (make-cube 100 100 1000))
+  ;; (send c1 :move-to (send (send *fetch* :copy-worldcoords) :transform mark) :world)
+  ;; (objects (list *fetch* *scene* c1))
+  mark)
+
+(defun touch-ic (coord)
+  (ik-coord coord))
+
+(search-mark "/sample1")
+(touch-ic search-mark)
