@@ -1,6 +1,12 @@
 #include <SPI.h>
 #include <MFRC522.h>
 
+#include <ros.h>
+#include <std_msgs/Int16.h>
+ros::NodeHandle nh;
+std_msgs::Int16 ic_msg;
+ros::Publisher ic_pub("/rfid/ic_uid", &ic_msg);
+
 constexpr uint8_t RST_PIN = 9;
 constexpr uint8_t SS_PIN = 10;
 
@@ -13,6 +19,10 @@ int led_red = 3;
 MFRC522 mfrc522(SS_PIN, RST_PIN);
 MFRC522::MIFARE_Key key;
 
+void ic_touch_sound(){
+  ic_msg.data = 1;
+  ic_pub.publish(&ic_msg);
+}
 void setup() {
     Serial.begin(9600);
     pinMode(led_blue, OUTPUT);
@@ -43,7 +53,7 @@ void loop() {
     }
     
     String strUID = strBuf[0] + " " + strBuf[1] + " " + strBuf[2] + " " + strBuf[3] ;//+ " " + strBuf[4] + " " + strBuf[5] + " " + strBuf[6];
-    if ( strUID.equalsIgnoreCase(UID) ){
+    if ( strUID.equalsIgnoreCase(UID_card) ){
         Serial.println("verified!");
         digitalWrite(led_blue, HIGH); // 青いLEDを光らせる
         delay(1000); // 1秒待つ
