@@ -10,12 +10,12 @@ def qr_callback(msg):
     #print msg.data
     global flag
     if msg.data == 1:
-        if flag == True:
-            rospy.loginfo("done")
-            pygame.mixer.music.play(1)
-            time.sleep(2)
-            pygame.mixer.music.stop()
-            flag = not flag
+        #if flag == True:
+        rospy.loginfo("beep!")
+        pygame.mixer.music.play(1)
+        time.sleep(2)
+        pygame.mixer.music.stop()
+        #flag = not flag
             #print flag
     else:
         flag = True
