@@ -30,7 +30,7 @@ def qr_sub():
 def main():
     global flag
     pygame.mixer.init()
-    pygame.mixer.music.load("../sounds/Ticket_Gate-Beep01-mp3/Ticket_Gate-Beep01-01(Tone1).mp3")
+    pygame.mixer.music.load("../sounds/Paypay_2.mp3")
     qr_sub()
     
 if __name__ == '__main__':
