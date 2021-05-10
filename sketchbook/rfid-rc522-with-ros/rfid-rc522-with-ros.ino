@@ -23,6 +23,7 @@ void ic_touch_sound(){
   ic_msg.data = 1;
   ic_pub.publish(&ic_msg);
 }
+
 void setup() {
     //Serial.begin(9600);
     pinMode(led_blue, OUTPUT);
@@ -58,6 +59,8 @@ void loop() {
         digitalWrite(led_blue, HIGH); // 青いLEDを光らせる
         delay(1000); // 1秒待つ
         digitalWrite(led_blue, LOW); // 青いLEDを消す
+        ic_msg.data = 1;
+        i
     } else {
         //Serial.println("error!");
         analogWrite(led_red, 180); // 赤いLEDを光らせる
