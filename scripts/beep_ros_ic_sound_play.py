@@ -23,7 +23,7 @@ def qr_callback(msg):
     
 def qr_sub():
     rospy.init_node('ic_connector', anonymous=True)
-    rospy.Subscriber('/qrcode', Int16, qr_callback)
+    rospy.Subscriber('/rfid/sound', Int16, qr_callback)
     rospy.spin()
 
 
