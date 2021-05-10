@@ -6,5 +6,5 @@ if __name__ == '__main__':
     pygame.mixer.init()
     pygame.mixer.music.load("../sounds/Ticket_Gate-Beep01-mp3/Ticket_Gate-Beep01-02(Tone1).mp3")
     pygame.mixer.music.play(1)
-    time.sleep(5)
+    time.sleep(2)
     pygame.mixer.music.stop()
