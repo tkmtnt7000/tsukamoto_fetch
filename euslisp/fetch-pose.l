@@ -4,8 +4,7 @@
 (defun make-relative-coord (x y z &optional (roll 0) (pitch 0) (yaw 0))
   (setq descartes (float-vector x y z))
   (setq euler (float-vector roll pitch yaw))
-  (setq relative-coord (send (send *fetch* :copy-worldcoords) :transform
-			     (make-coords :pos descartes :rpy euler)))
+  (setq relative-coord (send (send *fetch* :copy-worldcoords) :transform (make-coords :pos descartes :rpy euler)))
   relative-coord)
 
 #| 6自由度すべて拘束して相対位置に右手を動かす |#
@@ -18,8 +17,8 @@
 
 ;;ハンドを動かすだけならこれでよい
 ;;(send *fetch* :rarm :move-end-pos #f(0 0 10))
-;;(send *fetch* :rarm :move-end-rot pi/2 #f(0 0 1))
-;;(send *fetch* :rarm :move-end-rot pi/2 :z)
+;;(send *fetch* :rarm :move-end-rot 90 #f(0 0 1))
+;;(send *fetch* :rarm :move-end-rot 90 :z) notice: degree!
 
 #| 頭の上に手を持ってくる |#
 (defun raise-hand ()
