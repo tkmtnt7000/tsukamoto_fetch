@@ -30,7 +30,7 @@ def qr_sub():
 def main():
     global flag
     pygame.mixer.init()
-    pygame.mixer.music.load("../sounds/Paypay_2.mp3")
+    pygame.mixer.music.load("/home/tsukamoto/semi_ws/src/jsk_demos/jsk_2020_10_semi/sounds/Paypay_2.mp3")
     qr_sub()
     
 if __name__ == '__main__':
