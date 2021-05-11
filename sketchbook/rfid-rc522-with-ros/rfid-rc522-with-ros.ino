@@ -32,6 +32,7 @@ void setup() {
 
     nh.initNode();
     nh.advertise(ic_pub);
+    nh.advertise(card_id_pub);
     //Serial.begin(9600);
     //pinMode(led_blue, OUTPUT);
     //pinMode(led_red, OUTPUT);
@@ -58,7 +59,7 @@ void loop() {
 
     String strBuf[mfrc522.uid.size];
     for (byte i = 0; i < mfrc522.uid.size; i++) {
-        strBuf[i] =  String(mfrc522.uid.uidByte[i], HEX);
+        strBuf[i] =  (mfrc522.uid.uidByte[i], HEX);
         if(strBuf[i].length() == 1){
           strBuf[i] = "0" + strBuf[i];
         }
