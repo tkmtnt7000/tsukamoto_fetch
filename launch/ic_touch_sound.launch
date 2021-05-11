@@ -6,7 +6,7 @@
 
   <node name="touch_suica_wrong" pkg="jsk_2020_10_semi" type="alarm_ic_sound_play.py"/>
 
-  <node name="show_qrcode" pkg="jsk_2020_10_semi" type="paypay_sound_ros.py" />
+  <node name="sound_qrcode" pkg="jsk_2020_10_semi" type="paypay_sound_ros.py" />
 
   <node name="show_qrcode" pkg="jsk_2020_10_semi" type="qrcode_rect.py" />
 
