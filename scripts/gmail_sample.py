@@ -11,7 +11,7 @@ from email.mime.text import MIMEText
 from email.mime.application import MIMEApplication
 
 
-def send_room_access_email():
+def send_room_access_email(id_num):
     # SMTPサーバーを指定                                                 
     smtp_server = "smtp.gmail.com"
     #ポート番号を指定
@@ -44,8 +44,12 @@ def send_room_access_email():
     
     #本文作成
     dt_now = datetime.datetime.now()
+    if id_num == 1:
+        str_name = "塚本"
+    else:
+        str_name = "hoge"
     str_dt = dt_now.strftime('%Y年%m月%d日 %H:%M\n')
-    body = MIMEText("〇〇です.入退室しました.\n\n日時: "+str_dt+'場所: 73B2\n用事: 作業等\n')
+    body = MIMEText(str_name+"です. 入退室しました.\n\n日時: "+str_dt+'場所: 73B2\n用事: 作業等\n')
     msg.attach(body)
     
     '''
@@ -62,13 +66,14 @@ def send_room_access_email():
     
     #メールの送信
     server.send_message(msg)
+    print("send email!")
     
     #SMTPサーバーとの接続を終了
     server.quit()
 
 def room_access_cb(msg):
     if msg.data == 1:
-        send_room_access_email()
+        send_room_access_email(msg.data)
 
 def sub():
     rospy.init_node('room_access_email', anonymous=True)
