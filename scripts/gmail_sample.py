@@ -49,7 +49,7 @@ def send_room_access_email(id_num):
     else:
         str_name = "hoge"
     str_dt = dt_now.strftime('%Y年%m月%d日 %H:%M\n')
-    body = MIMEText(str_name+"です. 入退室しました.\n\n日時: "+str_dt+'場所: 73B2\n用事: 作業等\n')
+    body = MIMEText(str_name+"です. 入退室しました.\n\n日時: "+str_dt+'場所: 73B2\n用事: 作業等\n\npythonより送信')
     msg.attach(body)
     
     '''
